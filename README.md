@@ -4,7 +4,7 @@
 ## Table of Contents
 - [Technologies Used](#technologies-used)
 - [Features](#features)
-
+- [Installation](#installation)
 
 ## Technologies Used
 - **Programming Language**: C# (with .NET for MVC)
@@ -14,3 +14,6 @@
 
 
 ## Features
+
+## Installation
+1. Clone the repo
