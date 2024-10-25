@@ -14,7 +14,7 @@ namespace iCare.Models
     
     public partial class UserRole
     {
-        public int userRoleID { get; set; }
-        public string roleName { get; set; }
+        public string ID { get; set; }
+        public string RoleName { get; set; }
     }
 }

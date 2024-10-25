@@ -4,23 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="72cb23be4d4d45d6b279c54e06a23b20" Name="Diagram1">
-        <EntityTypeShape EntityType="Group9_iCareDBModel.DocumentMetadata" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.ExternalDrugDatabase" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.GeoCode" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.iCareAdmin" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.iCareUser" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.iCareWorker" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.ModificationHistory" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.PatientRecord" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.sysdiagram" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.TreatmentRecord" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.UserPassword" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.UserRole" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Group9_iCareDBModel.workerProfession" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="Group9_iCareDBModel.FK_ModificationHistory_DocumentMetadata" ManuallyRouted="false" />
-        <AssociationConnector Association="Group9_iCareDBModel.FK_iCareAdmin_iCareUser" ManuallyRouted="false" />
-        <AssociationConnector Association="Group9_iCareDBModel.FK_iCareWorker_iCareUser1" ManuallyRouted="false" />
+      <Diagram DiagramId="d3984082ced744669078dd9700e86c87" Name="Diagram1">
+        <EntityTypeShape EntityType="iCAREModel.DocumentMetadata" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.DrugsDictionary" Width="1.5" PointX="8.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.GeoCode" Width="1.5" PointX="5.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.iCAREAdmin" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.iCAREUser" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.iCAREWorker" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.ModificationHistory" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.PatientRecord" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.TreatmentRecord" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.UserPassword" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="iCAREModel.UserRole" Width="1.5" PointX="7.75" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="iCAREModel.FK__Modificat__DocID__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="iCAREModel.FK__iCAREAdmin__ID__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="iCAREModel.FK__iCAREWorker__ID__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="iCAREModel.FK__UserPassword__ID__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="iCAREModel.FK__Modificat__Worke__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="iCAREModel.FK__Treatment__Worke__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="iCAREModel.FK__Treatment__Patie__47DBAE45" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

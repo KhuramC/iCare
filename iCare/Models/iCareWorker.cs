@@ -12,11 +12,22 @@ namespace iCare.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class iCareWorker
+    public partial class iCAREWorker
     {
-        public int userID { get; set; }
-        public string profession { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public iCAREWorker()
+        {
+            this.ModificationHistories = new HashSet<ModificationHistory>();
+            this.TreatmentRecords = new HashSet<TreatmentRecord>();
+        }
     
-        public virtual iCareUser iCareUser { get; set; }
+        public string ID { get; set; }
+        public string Profession { get; set; }
+    
+        public virtual iCAREUser iCAREUser { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ModificationHistory> ModificationHistories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TreatmentRecord> TreatmentRecords { get; set; }
     }
 }

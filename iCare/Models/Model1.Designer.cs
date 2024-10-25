@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\khura\Documents\Mizzou Documents\Semester 5(Aug-Dec 2024)\CS 4320\Project2\iCare\iCare\Models\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Hipol\Source\Repos\KhuramC\iCare\iCare\Models\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

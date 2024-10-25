@@ -14,10 +14,12 @@ namespace iCare.Models
     
     public partial class UserPassword
     {
-        public int passwordID { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public int passwordExpiryTime { get; set; }
-        public Nullable<System.DateTime> userAccountExpiryDate { get; set; }
+        public string ID { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public Nullable<int> PasswordExpiryTime { get; set; }
+        public Nullable<System.DateTime> UserAccountExpiryDate { get; set; }
+    
+        public virtual iCAREUser iCAREUser { get; set; }
     }
 }

@@ -14,14 +14,23 @@ namespace iCare.Models
     
     public partial class PatientRecord
     {
-        public int patientID { get; set; }
-        public string name { get; set; }
-        public string address { get; set; }
-        public System.DateTime birthdate { get; set; }
-        public double height { get; set; }
-        public double weight { get; set; }
-        public string bloodGroup { get; set; }
-        public int bedID { get; set; }
-        public string treatmentArea { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PatientRecord()
+        {
+            this.TreatmentRecords = new HashSet<TreatmentRecord>();
+        }
+    
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public Nullable<System.DateTime> DateOfBirth { get; set; }
+        public Nullable<double> Height { get; set; }
+        public Nullable<double> Weight { get; set; }
+        public string BloodGroup { get; set; }
+        public string BedID { get; set; }
+        public string TreatmentArea { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TreatmentRecord> TreatmentRecords { get; set; }
     }
 }

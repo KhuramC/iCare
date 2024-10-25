@@ -14,10 +14,17 @@ namespace iCare.Models
     
     public partial class DocumentMetadata
     {
-        public int docID { get; set; }
-        public string docName { get; set; }
-        public Nullable<System.DateTime> dateOfCreation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DocumentMetadata()
+        {
+            this.ModificationHistories = new HashSet<ModificationHistory>();
+        }
     
-        public virtual ModificationHistory ModificationHistory { get; set; }
+        public string DocID { get; set; }
+        public string DocName { get; set; }
+        public Nullable<System.DateTime> DateOfCreation { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ModificationHistory> ModificationHistories { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Xml.Linq;
 
 namespace iCare.Models
 {
@@ -16,7 +17,7 @@ namespace iCare.Models
         public enum PatientState { Unassigned, NurseAssigned, DoctorAssigned }
         public PatientState CurrentState { get; private set; } = PatientState.Unassigned;
 
-        public string AssignNurse(iCareWorker nurse)
+        public string AssignNurse(iCAREWorker nurse)
         {
             if (NumOfNurses >= 3)
             {
@@ -26,18 +27,18 @@ namespace iCare.Models
             if (CurrentState == PatientState.Unassigned || CurrentState == PatientState.NurseAssigned)
             {
                 // Assign nurse and update state
-                TreatedBy = new TreatmentRecord { treatmentID = nurse.userID, description = "Nurse assigned" };
+                TreatedBy = new TreatmentRecord { TreatmentID = nurse.ID, Description = "Nurse assigned" };
                 NumOfNurses++;
                 CurrentState = PatientState.NurseAssigned;
 
-                return $"Nurse {nurse.userID} assigned to patient {name}. Total nurses: {NumOfNurses}.";
+                return $"Nurse {nurse.iCAREUser.Name} assigned to patient {Name}. Total nurses: {NumOfNurses}.";
             }
 
             return "Cannot assign nurse. Doctor has already been assigned.";
         }
 
         // Assign a doctor
-        public string AssignDoctor(iCareWorker doctor)
+        public string AssignDoctor(iCAREWorker doctor)
         {
             if (IsDoctorAssigned)
             {
@@ -47,11 +48,11 @@ namespace iCare.Models
             if (CurrentState == PatientState.NurseAssigned)
             {
                 // Assign doctor and update state
-                TreatedBy = new TreatmentRecord { treatmentID = doctor.userID, description = "Doctor assigned" };
+                TreatedBy = new TreatmentRecord { TreatmentID = doctor.ID, Description = "Doctor assigned" };
                 IsDoctorAssigned = true;
                 CurrentState = PatientState.DoctorAssigned;
 
-                return $"Doctor {doctor.userID} assigned to patient {name}.";
+                return $"Doctor {doctor.iCAREUser.Name} assigned to patient {Name}.";
             }
 
             return "Cannot assign doctor. Assign a nurse first.";

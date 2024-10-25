@@ -14,10 +14,13 @@ namespace iCare.Models
     
     public partial class ModificationHistory
     {
-        public int modifiedDocID { get; set; }
-        public System.DateTime dateOfModification { get; set; }
-        public string description { get; set; }
+        public int ModificationID { get; set; }
+        public Nullable<System.DateTime> DateOfModification { get; set; }
+        public string Description { get; set; }
+        public string DocID { get; set; }
+        public string WorkerID { get; set; }
     
         public virtual DocumentMetadata DocumentMetadata { get; set; }
+        public virtual iCAREWorker iCAREWorker { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace iCare.Models
     
     public partial class GeoCode
     {
-        public int geoCodeID { get; set; }
-        public string description { get; set; }
+        public string ID { get; set; }
+        public string Description { get; set; }
     }
 }

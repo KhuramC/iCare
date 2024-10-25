@@ -12,12 +12,13 @@ namespace iCare.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class iCareUser
+    public partial class iCAREUser
     {
-        public int userID { get; set; }
-        public string username { get; set; }
+        public string ID { get; set; }
+        public string Name { get; set; }
     
-        public virtual iCareAdmin iCareAdmin { get; set; }
-        public virtual iCareWorker iCareWorker { get; set; }
+        public virtual iCAREAdmin iCAREAdmin { get; set; }
+        public virtual iCAREWorker iCAREWorker { get; set; }
+        public virtual UserPassword UserPassword { get; set; }
     }
 }

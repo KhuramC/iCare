@@ -14,8 +14,13 @@ namespace iCare.Models
     
     public partial class TreatmentRecord
     {
-        public int treatmentID { get; set; }
-        public string description { get; set; }
-        public Nullable<System.DateTime> treatmentDate { get; set; }
+        public string TreatmentID { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.DateTime> TreatmentDate { get; set; }
+        public string PatientID { get; set; }
+        public string WorkerID { get; set; }
+    
+        public virtual iCAREWorker iCAREWorker { get; set; }
+        public virtual PatientRecord PatientRecord { get; set; }
     }
 }
