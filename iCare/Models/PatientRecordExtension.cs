@@ -26,11 +26,11 @@ namespace iCare.Models
             if (CurrentState == PatientState.Unassigned || CurrentState == PatientState.NurseAssigned)
             {
                 // Assign nurse and update state
-                TreatedBy = new TreatmentRecord { TreatmentID = nurse.ID, Description = "Nurse assigned" };
+                TreatedBy = new TreatmentRecord { treatmentID = nurse.userID, description = "Nurse assigned" };
                 NumOfNurses++;
                 CurrentState = PatientState.NurseAssigned;
 
-                return $"Nurse {nurse.name} assigned to patient {name}. Total nurses: {NumOfNurses}.";
+                return $"Nurse {nurse.userID} assigned to patient {name}. Total nurses: {NumOfNurses}.";
             }
 
             return "Cannot assign nurse. Doctor has already been assigned.";
