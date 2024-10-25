@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="72cb23be4d4d45d6b279c54e06a23b20" Name="Diagram1">
+        <EntityTypeShape EntityType="Group9_iCareDBModel.DocumentMetadata" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.ExternalDrugDatabase" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.GeoCode" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.iCareAdmin" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.iCareUser" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.iCareWorker" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.ModificationHistory" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.PatientRecord" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.sysdiagram" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.TreatmentRecord" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.UserPassword" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.UserRole" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Group9_iCareDBModel.workerProfession" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="Group9_iCareDBModel.FK_ModificationHistory_DocumentMetadata" ManuallyRouted="false" />
+        <AssociationConnector Association="Group9_iCareDBModel.FK_iCareAdmin_iCareUser" ManuallyRouted="false" />
+        <AssociationConnector Association="Group9_iCareDBModel.FK_iCareWorker_iCareUser1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
