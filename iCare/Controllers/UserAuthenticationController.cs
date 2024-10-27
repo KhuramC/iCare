@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+// Created by UserAuthenticationForm or login
 namespace iCare.Controllers
 {
     public class UserAuthenticationController : Controller
@@ -23,7 +24,7 @@ namespace iCare.Controllers
             string storedPassword = _userPassword.GetPassword(username);
 
             // Compare the provided password with the stored password.
-            // Handle this later ig
+            // Encrypt stored password before compare.
             if (storedPassword == password)
             {
                 // Successful login

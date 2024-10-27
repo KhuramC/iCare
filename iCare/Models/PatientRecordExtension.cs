@@ -18,6 +18,14 @@ namespace iCare.Models
         public PatientState CurrentState { get; private set; } = PatientState.Unassigned;
 
 
+        public List<PatientRecord> GetAllPatients()
+        {
+            using (var context = new iCAREEntities())
+            {
+                return context.PatientRecords.ToList();
+            }
+        }
+
         public List<PatientRecord> GetMyPatients(string workerID, List<string> patientIDs)
         {
             using (var context = new iCAREEntities())
