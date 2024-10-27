@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iCare.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,81 +9,44 @@ namespace iCare.Controllers
 {
     public class AssignPatientController : Controller
     {
-        // GET: AssignPatient
-        public ActionResult Index()
+        // GET: Retrieve all patient records
+        public ActionResult RetrieveAllPatients()
         {
-            return View();
-        }
-
-        // GET: AssignPatient/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: AssignPatient/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AssignPatient/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            using (var context = new iCAREEntities())
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                var patients = context.PatientRecords.ToList(); // Retrieve all patients from the database
+                return Json(patients, JsonRequestBehavior.AllowGet); // Return patients as JSON didn't know you could do this until I looked it up.
             }
         }
 
-        // GET: AssignPatient/Edit/5
-        public ActionResult Edit(int id)
+        // POST: Assign patients to a worker
+        public ActionResult AssignPatients(string workerID, List<string> selectedPatientIDs)
         {
-            return View();
-        }
-
-        // POST: AssignPatient/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            using (var context = new iCAREEntities())
             {
-                // TODO: Add update logic here
+                var worker = context.iCAREWorkers.FirstOrDefault(w => w.ID == workerID); // Find the worker by ID
+                if (worker == null)
+                {
+                    return Content("Worker not found.");
+                }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+                var assignedMessages = new List<string>();
 
-        // GET: AssignPatient/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
+                foreach (var patientID in selectedPatientIDs)
+                {
+                    var patient = context.PatientRecords.FirstOrDefault(p => p.ID == patientID); // Find the patient by ID
+                    if (patient == null)
+                    {
+                        assignedMessages.Add($"Patient with ID {patientID} not found.");
+                        continue;
+                    }
 
-        // POST: AssignPatient/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
+                    // Use the existing method to assign the nurse
+                    string message = patient.AssignNurse(worker); // Call the AssignNurse method from PatientRecord
+                    assignedMessages.Add(message); // Collect the response message
+                }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                return Json(assignedMessages); // Return the messages as JSON
             }
         }
     }

@@ -8,16 +8,7 @@ namespace iCare.Models
 {
     public partial class PatientRecord
     {
-        // Get all patient records.
-        public IEnumerable<PatientRecord> GetAllPatients()
-        {
-            using (var context = new iCAREEntities())
-            {
-                return context.PatientRecords.ToList();
-            }
-        }
-
-        // State management
+        // State management properties
         public TreatmentRecord TreatedBy { get; private set; }
         public int NumOfNurses { get; private set; } = 0;
         public bool IsDoctorAssigned { get; private set; } = false;
@@ -26,6 +17,17 @@ namespace iCare.Models
         public enum PatientState { Unassigned, NurseAssigned, DoctorAssigned }
         public PatientState CurrentState { get; private set; } = PatientState.Unassigned;
 
+
+        public List<PatientRecord> GetMyPatients(string workerID, List<string> patientIDs)
+        {
+            using (var context = new iCAREEntities())
+            {
+                var myPatients = context.PatientRecords
+                    .Where(p => patientIDs.Contains(p.ID) && p.TreatedBy.TreatmentID == workerID)
+                    .ToList();
+                return myPatients;
+            }
+        }
         public string AssignNurse(iCAREWorker nurse)
         {
             if (NumOfNurses >= 3)
@@ -35,18 +37,15 @@ namespace iCare.Models
 
             if (CurrentState == PatientState.Unassigned || CurrentState == PatientState.NurseAssigned)
             {
-                // Assign nurse and update state
                 TreatedBy = new TreatmentRecord { TreatmentID = nurse.ID, Description = "Nurse assigned" };
                 NumOfNurses++;
                 CurrentState = PatientState.NurseAssigned;
-
                 return $"Nurse {nurse.iCAREUser.Name} assigned to patient {Name}. Total nurses: {NumOfNurses}.";
             }
 
             return "Cannot assign nurse. Doctor has already been assigned.";
         }
 
-        // Assign a doctor
         public string AssignDoctor(iCAREWorker doctor)
         {
             if (IsDoctorAssigned)
@@ -56,11 +55,9 @@ namespace iCare.Models
 
             if (CurrentState == PatientState.NurseAssigned)
             {
-                // Assign doctor and update state
                 TreatedBy = new TreatmentRecord { TreatmentID = doctor.ID, Description = "Doctor assigned" };
                 IsDoctorAssigned = true;
                 CurrentState = PatientState.DoctorAssigned;
-
                 return $"Doctor {doctor.iCAREUser.Name} assigned to patient {Name}.";
             }
 
