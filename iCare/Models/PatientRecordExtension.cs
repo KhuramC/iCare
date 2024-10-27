@@ -8,6 +8,15 @@ namespace iCare.Models
 {
     public partial class PatientRecord
     {
+        // Get all patient records.
+        public IEnumerable<PatientRecord> GetAllPatients()
+        {
+            using (var context = new iCAREEntities1())
+            {
+                return context.PatientRecords.ToList();
+            }
+        }
+
         // State management
         public TreatmentRecord TreatedBy { get; private set; }
         public int NumOfNurses { get; private set; } = 0;
