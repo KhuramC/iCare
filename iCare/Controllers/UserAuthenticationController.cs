@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iCare.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,81 +9,32 @@ namespace iCare.Controllers
 {
     public class UserAuthenticationController : Controller
     {
-        // GET: UserAuthenticationControler
-        public ActionResult Index()
+        //endpoint uauth with username and password
+        public ActionResult Login(string username, string password)
         {
-            return View();
-        }
+            // add password encrpytion somewhere in here later.
+            string storedPassword = GetPassword(username);
 
-        // GET: UserAuthenticationControler/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: UserAuthenticationControler/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: UserAuthenticationControler/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            //validate credentials.
+            if (string.IsNullOrEmpty(storedPassword))
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                return Content("User does not exist.");
             }
-            catch
+            else if (storedPassword == password)
             {
-                return View();
+                return Content("Login successful.");
+            }
+            else
+            {
+                return Content("Invalid password.");
             }
         }
-
-        // GET: UserAuthenticationControler/Edit/5
-        public ActionResult Edit(int id)
+        private string GetPassword(string username)
         {
-            return View();
-        }
-
-        // POST: UserAuthenticationControler/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
+            using (var context = new iCAREEntities())
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UserAuthenticationControler/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UserAuthenticationControler/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                var userPassword = context.UserPasswords.FirstOrDefault(up => up.Username == username);
+                return userPassword?.Password ?? string.Empty;
             }
         }
     }
