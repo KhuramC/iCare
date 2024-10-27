@@ -264,11 +264,15 @@
     <Content Include="Views\Patient\Create.cshtml" />
     <Content Include="Views\Patient\Edit.cshtml" />
     <Content Include="Views\Patient\Details.cshtml" />
+    <Content Include="Views\MyBoard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AssignPatient\" />
     <Folder Include="Views\DisplayMyBoard\" />
+    <Folder Include="Views\Document\" />
+    <Folder Include="Views\Palette\" />
+    <Folder Include="Views\Treatment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
