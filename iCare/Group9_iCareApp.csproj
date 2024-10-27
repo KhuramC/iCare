@@ -130,7 +130,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AssignPatientController.cs" />
+    <Compile Include="Controllers\DisplayMyBoardController.cs" />
+    <Compile Include="Controllers\DisplayPaletteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\iCAREBoardController.cs" />
+    <Compile Include="Controllers\ImportImageController.cs" />
+    <Compile Include="Controllers\ManageAccountsController.cs" />
+    <Compile Include="Controllers\ManageDocumentController.cs" />
+    <Compile Include="Controllers\ManagePatientRecordController.cs" />
     <Compile Include="Controllers\UserAuthenticationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -270,7 +277,13 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\AssignPatient\" />
     <Folder Include="Views\DisplayMyBoard\" />
+    <Folder Include="Views\DisplayPalette\" />
     <Folder Include="Views\Document\" />
+    <Folder Include="Views\iCAREBoard\" />
+    <Folder Include="Views\ImportImage\" />
+    <Folder Include="Views\ManageAccounts\" />
+    <Folder Include="Views\ManageDocument\" />
+    <Folder Include="Views\ManagePatientRecord\" />
     <Folder Include="Views\Palette\" />
     <Folder Include="Views\Treatment\" />
   </ItemGroup>
