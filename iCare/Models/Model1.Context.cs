@@ -13,10 +13,10 @@ namespace iCare.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class iCAREEntities1 : DbContext
+    public partial class iCAREEntities : DbContext
     {
-        public iCAREEntities1()
-            : base("name=iCAREEntities1")
+        public iCAREEntities()
+            : base("name=iCAREEntities")
         {
         }
     

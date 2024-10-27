@@ -11,7 +11,7 @@ namespace iCare.Models
         // Get all patient records.
         public IEnumerable<PatientRecord> GetAllPatients()
         {
-            using (var context = new iCAREEntities1())
+            using (var context = new iCAREEntities())
             {
                 return context.PatientRecords.ToList();
             }

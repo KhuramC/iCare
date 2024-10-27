@@ -427,7 +427,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="iCAREEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="iCAREEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DocumentMetadatas" EntityType="Self.DocumentMetadata" />
           <EntitySet Name="DrugsDictionaries" EntityType="Self.DrugsDictionary" />
           <EntitySet Name="GeoCodes" EntityType="Self.GeoCode" />
@@ -473,7 +473,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="iCAREModelStoreContainer" CdmEntityContainer="iCAREEntities1">
+        <EntityContainerMapping StorageEntityContainer="iCAREModelStoreContainer" CdmEntityContainer="iCAREEntities">
           <EntitySetMapping Name="DocumentMetadatas">
             <EntityTypeMapping TypeName="iCAREModel.DocumentMetadata">
               <MappingFragment StoreEntitySet="DocumentMetadata">
