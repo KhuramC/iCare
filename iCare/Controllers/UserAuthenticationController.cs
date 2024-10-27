@@ -9,33 +9,38 @@ namespace iCare.Controllers
 {
     public class UserAuthenticationController : Controller
     {
-        //endpoint uauth with username and password
-        public ActionResult Login(string username, string password)
+        private readonly UserPassword _userPassword;
+        
+        // relies on a userpassword existing.
+        public UserAuthenticationController(UserPassword userPassword)
         {
-            // add password encrpytion somewhere in here later.
-            string storedPassword = GetPassword(username);
+            _userPassword = userPassword;
+        }
 
-            //validate credentials.
-            if (string.IsNullOrEmpty(storedPassword))
+        public ActionResult Validate(string username, string password)
+        {
+            // Retrieve the password from the database
+            string storedPassword = _userPassword.GetPassword(username);
+
+            // Compare the provided password with the stored password.
+            // Handle this later ig
+            if (storedPassword == password)
             {
-                return Content("User does not exist.");
-            }
-            else if (storedPassword == password)
-            {
-                return Content("Login successful.");
+                // Successful login
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                return Content("Invalid password.");
+                // Login failed
+                ModelState.AddModelError("", "Invalid username or password.");
+                return View();
             }
         }
-        private string GetPassword(string username)
+        public string encrypt(string password)
         {
-            using (var context = new iCAREEntities())
-            {
-                var userPassword = context.UserPasswords.FirstOrDefault(up => up.Username == username);
-                return userPassword?.Password ?? string.Empty;
-            }
+            //salt and hash password here.
+
+            return password;
         }
     }
 }

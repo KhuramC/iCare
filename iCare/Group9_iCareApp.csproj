@@ -177,10 +177,12 @@
     <Compile Include="Models\TreatmentRecord.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TreatmentRecordExtension.cs" />
     <Compile Include="Models\UserPassword.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PatientRecordExtension.cs" />
+    <Compile Include="Models\UserPasswordExtension.cs" />
     <Compile Include="Models\UserRole.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
