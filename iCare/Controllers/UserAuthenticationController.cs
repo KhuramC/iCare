@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,35 +14,39 @@ namespace iCare.Controllers
     {
         public ActionResult Validate(string username, string password)
         {
-            // Retrieve the password from the database
-            string storedPassword = GetPassword(username);
+            // Retrieve the stored hashed password
+            var storedHashedPassword = GetStoredHashedPassword(username);
 
-            // Compare the provided password with the stored password.
-            // Encrypt stored password before compare.
-            if (storedPassword == password)
+            // Hash the provided password
+            var hashedPassword = HashPassword(password);
+
+            // Compare the hashed passwords
+            if (hashedPassword == storedHashedPassword)
             {
-                // Successful login
                 return RedirectToAction("Index", "Home");
             }
-            else
-            {
-                // Login failed
-                ModelState.AddModelError("", "Invalid username or password.");
-                return View();
-            }
-        }
-        public string encrypt(string password)
-        {
-            //salt and hash password here.
 
-            return password;
+            ModelState.AddModelError("", "Invalid username or password");
+            return View();
         }
-        public string GetPassword(string username)
+
+        private string GetStoredHashedPassword(string username)
         {
             using (var context = new iCAREEntities())
             {
                 var userPassword = context.UserPasswords.FirstOrDefault(up => up.Username == username);
-                return userPassword?.Password ?? string.Empty;
+                return userPassword?.Password ?? string.Empty; // return empty string if null.
+            }
+        }
+
+        private string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                byte[] hashBytes = sha256.ComputeHash(passwordBytes);
+
+                return Convert.ToBase64String(hashBytes);
             }
         }
     }
