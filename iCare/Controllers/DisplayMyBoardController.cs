@@ -1,4 +1,5 @@
-﻿using System;
+﻿using iCare.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -85,5 +86,38 @@ namespace iCare.Controllers
                 return View();
             }
         }
+
+
+        public List<PatientRecord> retrieveMyPatients(string workerID)
+        {
+            var patientIDs = getPatientIDs(workerID);
+
+            var patients = GetMyPatients(workerID, patientIDs);
+
+            return patients;
+        }
+        public List<string> getPatientIDs(string workerID)
+        {
+            using (var context = new iCAREEntities())
+            {
+                var patientIDs = context.TreatmentRecords
+                    .Where(tr => tr.WorkerID == workerID) // Filter by workerID
+                    .Select(tr => tr.PatientID)
+                    .ToList();
+                return patientIDs;
+            }
+        }
+
+        public List<PatientRecord> GetMyPatients(string workerID, List<string> patientIDs)
+        {
+            using (var context = new iCAREEntities())
+            {
+                var myPatients = context.PatientRecords
+                    .Where(p => patientIDs.Contains(p.ID) && p.TreatedBy.TreatmentID == workerID)
+                    .ToList();
+                return myPatients;
+            }
+        }
+
     }
 }

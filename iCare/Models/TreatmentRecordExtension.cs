@@ -44,16 +44,5 @@ namespace iCare.Models
                 context.SaveChanges(); // Save changes
             }
         }
-        public List<string> GetPatientsID(string workerID)
-        {
-            using (var context = new iCAREEntities())
-            {
-                var treatmentRecords = context.TreatmentRecords
-                    .Where(tr => tr.WorkerID == workerID)
-                    .Select(tr => tr.PatientID)
-                    .ToList();
-                return treatmentRecords;
-            }
-        }
     }
 }

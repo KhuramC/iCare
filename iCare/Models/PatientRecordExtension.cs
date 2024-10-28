@@ -17,7 +17,6 @@ namespace iCare.Models
         public enum PatientState { Unassigned, NurseAssigned, DoctorAssigned }
         public PatientState CurrentState { get; private set; } = PatientState.Unassigned;
 
-
         public List<PatientRecord> GetAllPatients()
         {
             using (var context = new iCAREEntities())
@@ -26,16 +25,6 @@ namespace iCare.Models
             }
         }
 
-        public List<PatientRecord> GetMyPatients(string workerID, List<string> patientIDs)
-        {
-            using (var context = new iCAREEntities())
-            {
-                var myPatients = context.PatientRecords
-                    .Where(p => patientIDs.Contains(p.ID) && p.TreatedBy.TreatmentID == workerID)
-                    .ToList();
-                return myPatients;
-            }
-        }
         public string AssignNurse(iCAREWorker nurse)
         {
             if (NumOfNurses >= 3)
