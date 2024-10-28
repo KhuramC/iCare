@@ -10,8 +10,12 @@ namespace iCare.Controllers
     public class DisplayMyBoardController : Controller
     {
         // GET: DisplayMyBoard
-        public ActionResult Index()
+        public ActionResult Index(string workerID)
         {
+            // fetch data from database.
+            var myPatients = retrieveMyPatients(workerID);
+            ViewBag.MyPatients = myPatients;
+
             return View();
         }
 

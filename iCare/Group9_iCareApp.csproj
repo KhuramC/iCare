@@ -189,7 +189,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PatientRecordExtension.cs" />
-    <Compile Include="Models\UserPasswordExtension.cs" />
     <Compile Include="Models\UserRole.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -271,12 +270,11 @@
     <Content Include="Views\Patient\Create.cshtml" />
     <Content Include="Views\Patient\Edit.cshtml" />
     <Content Include="Views\Patient\Details.cshtml" />
-    <Content Include="Views\MyBoard\Index.cshtml" />
+    <Content Include="Views\DisplayMyBoard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AssignPatient\" />
-    <Folder Include="Views\DisplayMyBoard\" />
     <Folder Include="Views\DisplayPalette\" />
     <Folder Include="Views\Document\" />
     <Folder Include="Views\iCAREBoard\" />
