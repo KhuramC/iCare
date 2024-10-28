@@ -10,18 +10,10 @@ namespace iCare.Controllers
 {
     public class UserAuthenticationController : Controller
     {
-        private readonly UserPassword _userPassword;
-        
-        // relies on a userpassword existing.
-        public UserAuthenticationController(UserPassword userPassword)
-        {
-            _userPassword = userPassword;
-        }
-
         public ActionResult Validate(string username, string password)
         {
             // Retrieve the password from the database
-            string storedPassword = _userPassword.GetPassword(username);
+            string storedPassword = GetPassword(username);
 
             // Compare the provided password with the stored password.
             // Encrypt stored password before compare.
@@ -42,6 +34,14 @@ namespace iCare.Controllers
             //salt and hash password here.
 
             return password;
+        }
+        public string GetPassword(string username)
+        {
+            using (var context = new iCAREEntities())
+            {
+                var userPassword = context.UserPasswords.FirstOrDefault(up => up.Username == username);
+                return userPassword?.Password ?? string.Empty;
+            }
         }
     }
 }
