@@ -27,7 +27,7 @@ namespace iCare.Controllers
             }
 
             ModelState.AddModelError("", "Invalid username or password");
-            return View();
+            return RedirectToAction("Login", "Home");
         }
 
         private string GetStoredHashedPassword(string username)

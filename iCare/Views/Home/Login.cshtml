@@ -3,6 +3,16 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
-<p>This page will be used to login.</p>
-
+<div style="text-align:center">
+    <h2>Login</h2>
+    <p>Fill out the information below.</p>
+    <h3>User id:</h3>
+    <input type="email" />
+    <br />
+    <br />
+    <h3>Password:</h3>
+    <input type="password" />
+    <br />
+    <br />
+    <input type="button" value="Login" class="btn btn-primary" onclick="location.href='<%: Url.Action("Validate", "UserAuthentication") %>'" />
+</div>
